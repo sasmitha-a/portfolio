@@ -51,20 +51,20 @@ export default function ProjectsPage() {
 
   return (
     <div
-      className="min-h-screen flex flex-col items-center justify-center px-10 py-10 bg-cover bg-center bg-no-repeat"
+      className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-10 py-6 sm:py-10 bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: "url('/bg.jpg')" }}
     >
-      <div className="max-w-6xl w-full bg-white/10 backdrop-blur-sm rounded-lg p-8 flex flex-col gap-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+      <div className="max-w-6xl w-full bg-white/10 backdrop-blur-sm rounded-lg p-4 sm:p-8 flex flex-col gap-6 sm:gap-8">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8">
           {/* Left Column */}
-          <div className="flex-1 text-white flex flex-col justify-center items-start text-left px-4">
-            <h1 className="text-3xl font-bold mb-4">{projects[currentProject].title}</h1>
-              <ul className="list-disc pl-5 text-white/80 mb-6 space-y-2">
-      {projects[currentProject].description.map((point, index) => (
-        <li key={index}>{point}</li>
-      ))}
-    </ul>
-            <Button asChild>
+          <div className="flex-1 text-white flex flex-col justify-center items-start text-left px-2 sm:px-4">
+            <h1 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">{projects[currentProject].title}</h1>
+            <ul className="list-disc pl-4 sm:pl-5 text-white/80 mb-4 sm:mb-6 space-y-1.5 sm:space-y-2 text-sm sm:text-base">
+              {projects[currentProject].description.map((point, index) => (
+                <li key={index}>{point}</li>
+              ))}
+            </ul>
+            <Button asChild className="text-sm sm:text-base">
               <a
                 href={projects[currentProject].link}
                 target="_blank"
@@ -76,7 +76,7 @@ export default function ProjectsPage() {
           </div>
 
           {/* Right Column */}
-          <div className="flex-1 relative w-full h-72 md:h-96">
+          <div className="flex-1 relative w-full h-48 sm:h-72 md:h-96">
             <Image
               src={projects[currentProject].image || "/placeholder.svg"}
               alt={projects[currentProject].title}
@@ -87,22 +87,22 @@ export default function ProjectsPage() {
         </div>
 
         {/* Navigation */}
-        <div className="flex items-center justify-center space-x-4">
+        <div className="flex items-center justify-center space-x-3 sm:space-x-4">
           <Button
             variant="outline"
             size="icon"
             onClick={prevProject}
-            className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+            className="bg-white/10 border-white/20 text-white hover:bg-white/20 h-8 w-8 sm:h-10 sm:w-10"
           >
-            <ChevronLeft className="h-4 w-4" />
+            <ChevronLeft className="h-3 w-3 sm:h-4 sm:w-4" />
           </Button>
 
-          <div className="flex space-x-2">
+          <div className="flex space-x-1.5 sm:space-x-2">
             {projects.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentProject(index)}
-                className={`w-3 h-3 rounded-full transition-all ${
+                className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${
                   index === currentProject ? "bg-white" : "bg-white/30 hover:bg-white/50"
                 }`}
               />
@@ -113,9 +113,9 @@ export default function ProjectsPage() {
             variant="outline"
             size="icon"
             onClick={nextProject}
-            className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+            className="bg-white/10 border-white/20 text-white hover:bg-white/20 h-8 w-8 sm:h-10 sm:w-10"
           >
-            <ChevronRight className="h-4 w-4" />
+            <ChevronRight className="h-3 w-3 sm:h-4 sm:w-4" />
           </Button>
         </div>
       </div>
